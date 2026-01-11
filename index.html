@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OXIMO – Crafting Digital Spaces</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --purple:#9D4EDD;
+  --white:#ffffff;
+  --black:#06030c;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:Inter,sans-serif;
+  background:#06030c;
+  color:var(--white);
+  overflow-x:hidden;
+}
+
+/* ================= HEADER ================= */
+header{
+  position:fixed;
+  top:0;width:100%;
+  padding:18px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(6,3,12,.65);
+  backdrop-filter:blur(12px);
+  z-index:1000;
+}
+.logo{display:flex;align-items:center;gap:10px;cursor:pointer}
+.logo img{width:34px}
+.logo-text{font-size:1.3rem;font-weight:600}
+.logo-text .o{color:var(--purple)}
+.logo-text .rest{color:white}
+nav{display:flex;align-items:center;gap:32px}
+nav a{color:white;text-decoration:none;font-weight:500}
+nav a:hover{color:var(--purple)}
+nav a.send-btn:hover{
+  color: white;
+}
+
+
+/* ================= HERO ================= */
+.hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(115deg,#06030c 0%,#09060f 25%,#0d0916 45%,#130d1f 65%,#181026 85%,#1c132c 100%);
+}
+.hero::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(transparent 96%,rgba(255,255,255,.05)),
+    linear-gradient(90deg,transparent 96%,rgba(255,255,255,.05));
+  background-size:42px 42px;
+  opacity:.22;
+}
+.hero::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(
+    circle at 80% 40%,
+    rgba(157,78,221,0.07),
+    rgba(157,78,221,0.035),
+    transparent 65%
+  );
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  max-width:760px;
+  margin-left:calc(11% + 75px);
+}
+.hero-badge{
+  display:inline-block;
+  padding:6px 14px;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:20px;
+  font-size:.85rem;
+  margin-bottom:22px;
+  opacity:.85;
+}
+.hero h1{line-height:1.05;margin-bottom:28px}
+.hero-line-1,.hero-line-2{display:block;white-space:nowrap}
+.crafting,.that,.clearly{font-size:2.1rem;font-weight:500}
+.digital,.you{font-family:Cinzel,serif;font-size:3.3rem;color:var(--purple)}
+.hero p{max-width:640px;line-height:1.7}
+.hero-img{position:relative;z-index:2;display:flex;justify-content:center}
+.hero-img img{width:520px;animation:float 4s ease-in-out infinite}
+.hero-strip{
+  margin-top:90px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  width:100%;
+  font-size:1.3rem;
+  font-weight:500;
+}
+.hero-strip div{display:flex;align-items:center;gap:8px}
+
+/* ================= FLOAT ================= */
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-18px)}
+}
+
+/* ================= CONTINUOUS BACKGROUND (ONLY CHANGE) ================= */
+.flow-bg{
+  position:relative;
+  isolation:isolate;
+}
+.flow-bg::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:
+    /* softer & smaller purple glow */
+    radial-gradient(
+      700px 420px at 12% 18%,
+      rgba(157,78,221,0.06),
+      transparent 72%
+    ),
+    /* darker + more neutral top */
+    linear-gradient(180deg,
+      #1b0b28 0%,
+      #12081c 22%,
+      #0c0614 45%,
+      #06030c 65%,
+      #0f071a 80%,
+      #24123a 100%);
+}
+
+/* remove original section backgrounds */
+.about,
+.help,
+.approach,
+.contact{
+  background:transparent;
+}
+
+/* ================= ABOUT ================= */
+.about{
+  padding:140px 8% 160px;
+}
+.about-title{
+  text-align:center;
+  font-size:2.4rem;
+  font-weight:600;
+  margin-bottom:90px;
+}
+.about-content{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:80px;
+}
+.about-img{display:flex;justify-content:center}
+.about-img img{width:360px;animation:float 4s ease-in-out infinite}
+.about-text p{
+  max-width:520px;
+  line-height:1.75;
+  opacity:.9;
+}
+
+/* ================= HOW WE HELP ================= */
+.help{
+  padding:140px 8% 160px;
+}
+.help-header{max-width:760px;margin-bottom:50px}
+.help-header h2{font-size:2.6rem;font-weight:600;margin-bottom:14px}
+.help-header p{opacity:.85}
+.help-divider{display:flex;gap:22px;margin-bottom:70px}
+.help-divider span{flex:1;height:2px;background:rgba(255,255,255,.35)}
+.help-cards{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:26px;
+}
+.help-card{
+  background: linear-gradient(160deg,#4A1E7A,#2B1148);
+  border-radius:22px;
+  padding:34px 26px 40px;
+  min-height:320px;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  transition:.35s ease;
+}
+.help-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 20px 40px rgba(0,0,0,.35);
+}
+.help-card .icon{font-size:1.8rem}
+.help-card h3{font-size:1.05rem;font-weight:600}
+.help-card p{font-size:.95rem;line-height:1.6;opacity:.9}
+
+/* ================= OUR APPROACH ================= */
+.approach{
+  padding:140px 8% 160px;
+}
+.approach-content{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  align-items:center;
+  gap:90px;
+}
+.approach-text h2{font-size:2.6rem;font-weight:600;margin-bottom:18px}
+.approach-intro{
+  max-width:520px;
+  line-height:1.7;
+  opacity:.85;
+  margin-bottom:50px;
+}
+.approach-steps{display:flex;flex-direction:column;gap:28px}
+.step{display:flex;gap:14px}
+.step-number{font-size:1.1rem;color:var(--purple);font-weight:600}
+.step h4{font-size:1rem;font-weight:600;margin-bottom:6px}
+.step p{
+  font-size:.95rem;
+  line-height:1.6;
+  opacity:.9;
+  max-width:520px;
+}
+.approach-img{display:flex;justify-content:center}
+.approach-img img{
+  width:420px;
+  margin-top:75px;
+  animation:float 4s ease-in-out infinite;
+}
+
+/* ================= CONTACT ================= */
+.contact{
+  padding:160px 8% 140px;
+}
+.contact-content{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:120px;
+}
+.contact-text h2{font-size:3rem;margin-bottom:18px}
+.contact-text p{max-width:420px;line-height:1.6;opacity:.85}
+.contact-text .response{margin-top:28px;font-size:.95rem;opacity:.8}
+.contact-form{display:flex;flex-direction:column;gap:18px}
+.contact-form label{font-size:.85rem}
+.contact-form input,
+.contact-form textarea{
+  background:linear-gradient(145deg,#4b2a6a,#3a1e55);
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:14px;
+  padding:14px 18px;
+  color:white;
+  font-family:Inter;
+}
+.contact-form textarea{height:120px;resize:none}
+.contact-form button{
+  width:180px;
+  padding:12px;
+  border:none;
+  border-radius:24px;
+  background: linear-gradient(135deg, #9D4EDD, #7B2CBF);
+  color:white;
+  cursor:pointer;
+}
+
+/* ================= FOOTER (UNCHANGED) ================= */
+.footer{
+  background:linear-gradient(120deg,#06030c,#12071c,#1b0c2d);
+  padding:80px 8% 50px;
+}
+.footer-content{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+}
+.footer-astronaut img{
+  width:240px;
+  animation:float 4s ease-in-out infinite;
+}
+.footer-info{margin-left:56px}
+.footer-info h4{font-size:1.1rem;margin-bottom:14px}
+.footer-info p{color:var(--purple);margin-bottom:4px}
+.footer-socials{display:flex;gap:22px;margin-top:20px}
+.footer-socials a{width:22px;height:22px;display:inline-flex}
+.footer-socials svg{width:100%;height:100%;fill:white;transition:.3s}
+.footer-socials a:hover svg{fill:var(--purple)}
+.footer-bottom{margin-top:50px;font-size:.85rem;opacity:.7}
+/* ===== CONTACT LINK UNDERLINE ANIMATION ===== */
+.contact-link{
+  position: relative;
+  color: inherit;
+  text-decoration: none;
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+.contact-link::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(135deg, var(--purple), #7c3aed);
+  transition: width 0.35s ease;
+}
+
+.contact-link:hover::after{
+  width: 100%;
+}
+/* ===== SEND MESSAGE BUTTON ANIMATION ===== */
+.send-btn{
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 22px;
+  background: linear-gradient(135deg, var(--purple), #7c3aed);
+  border: none;
+  border-radius: 28px;
+  color: white;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* hover animation */
+.send-btn:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(159, 91, 255, 0.35);
+}
+
+/* click animation */
+.send-btn:active{
+  transform: translateY(0);
+  box-shadow: 0 6px 18px rgba(159, 91, 255, 0.25);
+}
+
+/* light sweep animation */
+.send-btn::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 120%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.35),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.send-btn:hover::after{
+  left: 120%;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:900px){
+  header{padding:16px 6%}
+  .hero{grid-template-columns:1fr;padding-top:140px}
+  .hero-content{margin-left:0;padding:0 6%}
+  .hero-img img{width:380px}
+  .hero-strip{flex-wrap:wrap;gap:18px}
+  .about{padding:120px 6% 140px}
+  .about-content{grid-template-columns:1fr;text-align:center}
+  .about-text p{margin:0 auto}
+  .about-img img{width:300px}
+  .help-cards{grid-template-columns:1fr}
+  .approach{padding:120px 6% 140px}
+  .approach-content{grid-template-columns:1fr;text-align:center}
+  .approach-intro,.step p{margin:0 auto}
+  .approach-img img{width:320px;margin-top:50px}
+  .step{justify-content:center}
+  .contact-content,
+  .footer-content{grid-template-columns:1fr;text-align:center}
+  .footer-info{margin-left:0}
+  .footer-astronaut img{margin:0 auto 30px}
+  .footer-socials{justify-content:center}
+  .contact-form button{margin:0 auto}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo" onclick="location.href='#home'">
+    <img src="assets/logo.png">
+    <div class="logo-text"><span class="o">O</span><span class="rest">XIMO</span></div>
+  </div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#contact" class="send-btn">Let’s talk →</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-badge">#Thoughtful Digital Design</div>
+    <h1>
+      <span class="hero-line-1">
+        <span class="crafting">Crafting</span>
+        <span class="digital"> Digital Spaces</span>
+        <span class="that"> that</span>
+      </span>
+      <span class="hero-line-2">
+        <span class="clearly">Clearly Represents</span>
+        <span class="you"> You.</span>
+      </span>
+    </h1>
+    <p>
+      We design refined digital spaces that help businesses, creators, and individuals present themselves clearly, confidently, and professionally.
+    </p>
+    <div class="hero-strip">
+      <div>🌐 Website</div>
+      <div>💼 Portfolio</div>
+      <div>✏️ Personal Blog</div>
+      <div>🎧 Ongoing Support</div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <img src="assets/astronaut-float.png" alt="Floating Astronaut">
+  </div>
+</section>
+
+<div class="flow-bg">
+
+<section class="about" id="about">
+  <h2 class="about-title">Our Story</h2>
+  <div class="about-content">
+    <div class="about-img">
+      <img src="assets/astronaut-laptop.png" alt="Astronaut Laptop">
+    </div>
+    <div class="about-text">
+      <p>
+        We started OXIMO with a simple belief-what you do deserves to be presented with clarity and intention online. Today, many businesses and individuals struggle with complicated tools, scattered online identities, or websites that fail to communicate their value clearly. A website should not feel like a barrier or an afterthought it should be a clear, reliable space that represents who you are and what you do.At OXIMO, we simplify that process by designing clean, modern, and dependable websites for brands, services,portfolios, and personal stories -helping people present themselves honestly, professionally, and with confidence.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="help">
+  <div class="help-header">
+    <h2>How We Help You Succeed Online</h2>
+    <p>Everything you need to establish a strong and professional digital presence</p>
+  </div>
+  <div class="help-divider">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="help-cards">
+    <div class="help-card"><div class="icon">🌐</div><h3>Business Website</h3><p>Clear, modern websites designed to explain your services, build trust, and convert visitors into clients.</p></div>
+    <div class="help-card"><div class="icon">💼</div><h3>Portfolios & Personal Websites</h3><p>Elegant, minimal websites to showcase work, skills, or personal brands with clarity and confidence.</p></div>
+    <div class="help-card"><div class="icon">✏️</div><h3>Blogs & Content Platforms</h3><p>Clean, readable platforms that allow ideas, insights, and stories to take center stage.</p></div>
+    <div class="help-card"><div class="icon">🛠️</div><h3>Technical Setup & Hosting</h3><p>We handle domains, hosting, performance, and technical details so you can focus on what you do best.</p></div>
+    <div class="help-card"><div class="icon">🎧</div><h3>Ongoing Support</h3><p>Continuous assistance to keep your website secure, updated, and running smoothly as you grow.</p></div>
+  </div>
+</section>
+
+<section class="approach">
+  <div class="approach-content">
+    <div class="approach-text">
+      <h2>Our Approach</h2>
+      <p class="approach-intro">
+        We believe in design that communicates clearly and supports your goals — without unnecessary complexity.
+      </p>
+      <div class="approach-steps">
+        <div class="step"><span class="step-number">1.</span><div><h4>Understand Your Needs</h4><p>We begin by understanding who you are, what you do, and what you want your website to achieve.</p></div></div>
+        <div class="step"><span class="step-number">2.</span><div><h4>Design with Purpose</h4><p>We design clean layouts focused on structure, typography, usability, and visual balance – not distractions.</p></div></div>
+        <div class="step"><span class="step-number">3.</span><div><h4>Build & Refine</h4><p>Your website is built as a fast, responsive, and reliable site, refined for performance, clarity, and longevity.</p></div></div>
+        <div class="step"><span class="step-number">4.</span><div><h4>Launch & Support</h4><p>We help you launch confidently and provide ongoing guidance for updates, improvements, or future growth.</p></div></div>
+      </div>
+    </div>
+    <div class="approach-img">
+      <img src="assets/approach-illustration.png" alt="Our Approach Illustration">
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-content">
+    <div class="contact-text">
+      <h2>Let's Start a Conversation</h2>
+      <p>Tell us about your project and we'll get back to you with how we can help.</p>
+      <div class="response">
+        <strong>Response time</strong><br>
+        We typically respond within 24–48 hours.
+      </div>
+    </div>
+    <form class="contact-form">
+      <label>Name</label>
+      <input type="text" placeholder="Your name">
+      <label>Email</label>
+      <input type="email" placeholder="your@email.com">
+      <label>Message</label>
+      <textarea placeholder="Tell us about your project..."></textarea>
+      <button type="submit" class="send-btn">
+  Send Message
+</button>
+
+    </form>
+  </div>
+</section>
+
+</div>
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-astronaut">
+      <img src="assets/astronaut-footer.png" alt="Astronaut">
+    </div>
+    <div class="footer-info">
+      <h4>Contact</h4>
+      <p>
+  <a href="mailto:oximocontact@gmail.com" class="contact-link">
+    oximocontact@gmail.com
+  </a>
+</p>
+
+<p>
+  <a href="tel:+919392360212" class="contact-link">
+    +91 9392360212
+  </a>
+</p>
+
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/oximo.in/" target="_blank" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.5-.9a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61585352591770" target="_blank" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H8v-3h2.4V9.3c0-2.4 1.4-3.7 3.6-3.7 1 0 2 .2 2 .2v2.2h-1.1c-1.1 0-1.4.7-1.4 1.4V11H16l-.4 3h-2.5v7A10 10 0 0 0 22 12z"/></svg>
+        </a>
+        <a href="https://x.com/oximoteam" target="_blank" aria-label="X">
+          <svg viewBox="0 0 24 24"><path d="M18.9 2H22l-7.6 8.7L23 22h-6.8l-5.4-6.9L4.7 22H2l8.1-9.3L1 2h6.9l4.9 6.3L18.9 2z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/oximo" target="_blank" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3V9zm7 0h3.8v1.6h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6v6.4h-4v-5.7c0-1.4 0-3.2-2-3.2s-2.3 1.5-2.3 3.1v5.8h-4V9z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    Copyright © OXIMO 2026. All rights reserved.
+  </div>
+</footer>
+
+</body>
+</html>
