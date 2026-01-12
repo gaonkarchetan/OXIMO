@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OXIMO – Crafting Digital Spaces</title>
+
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -599,18 +603,17 @@ nav a.send-btn:hover{
         We typically respond within 24–48 hours.
       </div>
     </div>
-    <form class="contact-form">
+    <div class="contact-form">
       <label>Name</label>
-      <input type="text" placeholder="Your name">
-      <label>Email</label>
-      <input type="email" placeholder="your@email.com">
-      <label>Message</label>
-      <textarea placeholder="Tell us about your project..."></textarea>
-      <button type="submit" class="send-btn">
+      <input type="text" id="wa-name" placeholder="Your name">
+<input type="email" id="wa-email" placeholder="your@email.com">
+<textarea id="wa-message" placeholder="Tell us about your project..."></textarea>
+
+<button type="button" class="send-btn" onclick="sendToWhatsApp()">
   Send Message
 </button>
 
-    </form>
+    </div>
   </div>
 </section>
 
@@ -655,6 +658,30 @@ nav a.send-btn:hover{
     Copyright © OXIMO 2026. All rights reserved.
   </div>
 </footer>
+<script>
+function sendToWhatsApp() {
+  var name = document.getElementById("wa-name").value.trim();
+  var email = document.getElementById("wa-email").value.trim();
+  var message = document.getElementById("wa-message").value.trim();
+
+  if (!name || !email || !message) {
+    alert("Please fill all fields before sending.");
+    return;
+  }
+
+  var phoneNumber = "919392360212"; // your WhatsApp number (NO +)
+
+  var text =
+    "Hello OXIMO,%0A%0A" +
+    "Name: " + name + "%0A" +
+    "Email: " + email + "%0A%0A" +
+    "Message:%0A" + message;
+
+  var whatsappURL = "https://wa.me/" + phoneNumber + "?text=" + text;
+
+  window.open(whatsappURL, "_blank");
+}
+</script>
 
 </body>
 </html>
