@@ -476,35 +476,59 @@ nav a.send-btn:hover{
     padding-right: 6%;
   }
 }
-/* ================= HEADER MOBILE FIX ================= */
+/* ================= HEADER MOBILE FIX (FINAL) ================= */
 @media (max-width: 600px) {
 
   header {
-    flex-direction: column;
-    gap: 14px;
-    padding: 14px 6%;
+    flex-direction: row;           /* single row */
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 6%;              /* compact height */
+    gap: 0;
   }
 
+  /* Logo + Brand (Left Side) */
   .logo {
-    justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    margin-right: 18px;            /* space from nav */
   }
 
+  .logo img {
+    width: 26px;                   /* smaller logo */
+  }
+
+  .logo-text {
+    font-size: 1.05rem;
+    letter-spacing: 0.3px;
+  }
+
+  /* Navigation (Right Side) */
   nav {
-    width: 100%;
-    justify-content: center;
-    gap: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 14px;
+    margin-left: 18px;             /* space from logo */
+    width: auto;
   }
 
   nav a {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    white-space: nowrap;
   }
 
+  /* CTA Button */
   .send-btn {
-    padding: 8px 18px;
-    font-size: 0.9rem;
+    padding: 6px 14px;
+    font-size: 0.85rem;
   }
 
 }
+
+
 
 </style>
 
